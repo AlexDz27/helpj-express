@@ -9,11 +9,7 @@ likeButton.addEventListener('click', () => {
   likesCountElem.innerText = likesCount
 
   // Отправить запрос на сервер чтобы сервер у себя обновил количество лайков
-  let url = 'http://localhost:3000/likes/update'
-  if (window.isAppRunningOnRender) {
-    url = 'https://helpj-express.onrender.com/likes/update'
-  }
-  fetch(url, {
+  fetch('http://hj3exp/likes/update', {
     method: 'POST',
     body: likesCount
   })
