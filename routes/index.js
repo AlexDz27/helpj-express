@@ -5,9 +5,12 @@ const fs = require('fs')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const currentLikesCount = fs.readFileSync('likesCount.txt').toString()
-  console.log(currentLikesCount)
+  let isAppRunningOnRender = false
+  if (process.env.RUNNING_ON_RENDER) {
+    isAppRunningOnRender = true
+  }
 
-  res.render('index', { likesCount: currentLikesCount });
+  res.render('index', { likesCount: currentLikesCount, isAppRunningOnRender });
 });
 
 module.exports = router;
